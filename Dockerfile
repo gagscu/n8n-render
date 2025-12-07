@@ -1,8 +1,8 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:latest-alpine
 
 USER root
 
-# Install FFmpeg + ImageMagick (Alpine packages)
+# Install FFmpeg + ImageMagick on Alpine
 RUN apk update && apk add --no-cache \
     ffmpeg \
     imagemagick \
