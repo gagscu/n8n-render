@@ -1,27 +1,21 @@
 FROM n8nio/n8n:latest
 
-# Switch to root to install dependencies
 USER root
 
-# Install full FFmpeg + ImageMagick + essential tools
-RUN apt-get update && apt-get install -y \
+# Install ffmpeg (Alpine package)
+RUN apk update && apk add --no-cache \
     ffmpeg \
     imagemagick \
-    sox \
-    python3 \
-    python3-pip \
     curl \
-    git \
-    wget \
-    nano \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    bash \
+    git
 
-# Switch back to n8n user
 USER node
 
-# Timezone
-ENV GENERIC_TIMEZONE="Asia/Kolkata"
+ENV N8N_HOST=0.0.0.0
+ENV N8N_PORT=5678
+ENV N8N_PROTOCOL=https
 
-# Required for storage
-VOLUME /home/node/.n8n
+EXPOSE 5678
+
+CMD ["n8n"]
