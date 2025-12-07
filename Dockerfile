@@ -1,22 +1,10 @@
-FROM n8nio/n8n:latest-alpine
+FROM n8nio/n8n:latest
 
+# Install FFmpeg
 USER root
-
-# Install FFmpeg + ImageMagick on Alpine
-RUN apk update && apk add --no-cache \
-    ffmpeg \
-    imagemagick \
-    curl \
-    bash \
-    git
-
+RUN apt-get update && apt-get install -y ffmpeg
 USER node
 
-ENV N8N_HOST=0.0.0.0
-ENV N8N_PORT=5678
-ENV N8N_PROTOCOL=https
-ENV TZ=Asia/Kolkata
+ENV GENERIC_TIMEZONE="Asia/Kolkata"
 
-EXPOSE 5678
-
-CMD ["n8n"]
+VOLUME /home/node/.n8n
