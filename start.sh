@@ -1,10 +1,9 @@
 #!/bin/sh
 set -e
 
-echo "Checking FFmpeg..."
+echo "FFmpeg version:"
 ffmpeg -version
 
-echo "Creating video..."
+echo "Running video creation..."
 python main.py
 
-echo "Done"
