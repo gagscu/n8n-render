@@ -13,10 +13,11 @@ cmd = (
     "output.mp4"
 )
 
+print("Running FFmpeg...")
 os.system(cmd)
 
 if os.path.exists("output.mp4"):
     print("✅ Video created successfully")
 else:
     print("❌ Video creation failed")
-  
+    
