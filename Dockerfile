@@ -1,10 +1,7 @@
-FROM n8nio/n8n:latest
+FROM jrottenberg/ffmpeg:4.4-alpine
 
-# Install FFmpeg
-USER root
-RUN apt-get update && apt-get install -y ffmpeg
-USER node
+WORKDIR /app
+COPY . .
 
-ENV GENERIC_TIMEZONE="Asia/Kolkata"
+CMD ["sh","start.sh"]
 
-VOLUME /home/node/.n8n
