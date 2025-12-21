@@ -7,5 +7,5 @@ RUN pip install flask
 
 COPY . .
 
-CMD ["python3", "app.py"]
+ENTRYPOINT ["python3", "app.py"]
 
